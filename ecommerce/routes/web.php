@@ -22,6 +22,9 @@ Route::get('/boutique/{slug}', 'ProductController@show')->name('products.show');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
+//Route pour le panier
+Route::post('/panier/ajouter', 'CartController@store')->name('cart.store');
+
 // Routes Users
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
     Route::resource('users', 'UsersController');

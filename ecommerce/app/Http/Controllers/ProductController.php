@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Product;
 
 class ProductController extends Controller
 {
     public function index()
     {
+
         $products = Product::inRandomOrder()->take(6)->get();
+
         return view('products.index')->with('products', $products);
     }
 
