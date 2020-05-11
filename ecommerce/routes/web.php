@@ -17,8 +17,12 @@ Route::get('/', function () {
     return view('products\index');
 });
 
-
+// Routes des produits
+Route::get('/boutique', 'ProductController@index')->name('products.index');
+Route::get('/boutique/{slug}', 'ProductController@show')->name('products.show');
 Route::get('/boutique', 'ProductController@index');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Routes Users
 Route::resource('/admin/users', 'Admin\UsersController');
