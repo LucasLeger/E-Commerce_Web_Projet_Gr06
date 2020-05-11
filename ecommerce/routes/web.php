@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('products\index');
-});
+
+Route::get('/', 'ProductController@index')->name('products.index');
 
 // Routes des produits
 Route::get('/boutique', 'ProductController@index')->name('products.index');
