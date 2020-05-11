@@ -158,25 +158,13 @@
         <a class="text-muted" href="#">Subscribe</a>
       </div>
       <div class="col-4 text-center">
-        <a class="blog-header-logo text-dark" href="#">Large</a>
+        <a class="blog-header-logo text-dark" href="{{ route('products.index') }}">Large</a>
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
         <a class="text-muted" href="#" aria-label="Search">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24" focusable="false"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
+        </a>
+        <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
       </div>
     </div>
   </header>
@@ -207,23 +195,20 @@
   </div>
 
   <div class="row mb-2">
-    @foreach ($products as $product)
-      <div class="col-md-6">
+      <div class="col-md-12">
         <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
           <div class="col p-4 d-flex flex-column position-static">
             <strong class="d-inline-block mb-2 text-success">Design</strong>
             <h5 class="mb-0">{{ $product->title }}</h5>
             <div class="mb-1 text-muted">{{ $product->created_at->format('d/m/Y') }}</div>
-            <p class="mb-auto">{{ $product->subtitle }}</p>
+            <p class="mb-auto">{{ $product->description }}</p>
             <strong class="mb-auto">{{ $product->getPrice() }}</strong>
-            <a href="{{ route('products.show', $product->slug) }}" class="stretched-link btn btn-primary">Voir l'article</a>
           </div>
           <div class="col-auto d-none d-lg-block">
             <img src="{{ $product->image }}" alt="">
           </div>
         </div>
       </div>
-    @endforeach
   </div>
 </div>
 
