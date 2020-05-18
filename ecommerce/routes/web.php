@@ -34,6 +34,6 @@ Route::get('/videpanier', function () {
 //Route pages de paiements
 Route::get('/paiement', 'CheckoutController@index')->name('checkout.index');
 // Routes Users
-Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function(){
     Route::resource('users', 'UsersController');
 });
