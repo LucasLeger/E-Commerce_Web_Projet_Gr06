@@ -7,7 +7,7 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.6">
     @yield('extra-meta')
-    <title>PROJET B2 DEV WEB</title>
+    <title>GameBreak</title>
 
     @yield('extra-script')
 
@@ -162,7 +162,7 @@
         <a class="text-muted" href="{{ route('cart.index') }}">Panier <span class="badge badge-pill badge-dark">{{ Cart::count() }}</span></a>
       </div>
       <div class="col-4 text-center">
-        <a class="blog-header-logo text-dark" href="{{ route('products.index') }}">Val et Lucas</a>
+        <a class="blog-header-logo text-dark" href="{{ route('products.index') }}">Gamebreak</a>
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
         <a class="text-muted" href="#" aria-label="Search">
@@ -171,12 +171,12 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Dashboard</a>
+                        <a href="{{ url('/home') }}">Compte</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('login') }}">Connexion</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <a href="{{ route('register') }}">Créer un compte</a>
                         @endif
                     @endauth
                 </div>
