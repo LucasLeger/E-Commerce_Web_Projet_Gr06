@@ -33,6 +33,10 @@ Route::get('/videpanier', function () {
 
 //Route pages de paiements
 Route::get('/paiement', 'CheckoutController@index')->name('checkout.index');
+Route::post('/paiement', 'CheckoutController@store')->name('checkout.store');
+Route::get('/merci', function (){
+    return view('checkout.thankyou');
+});
 // Routes Users
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function(){
     Route::resource('users', 'UsersController');

@@ -17,6 +17,10 @@ class CheckoutController extends Controller
      */
     public function index()
     {
+        if(Cart::count() <= 0){
+            return redirect()->route('products.index');
+        }
+
         Stripe::setApiKey('sk_test_v9TMdwuQ9hwZEUvuv5W9HO2T00hOkUeQy6');
 
         $intent = PaymentIntent::create([
@@ -25,7 +29,7 @@ class CheckoutController extends Controller
             'metadata' => ['integration_check' => 'accept_a_payment'],
           ]);
 
-          $clientSecret = ARR::get($intent, 'client_secret');
+          $clientSecret = Arr::get($intent, 'client_secret');
 
           return view('checkout.index', [
               'clientSecret' => $clientSecret
@@ -52,7 +56,11 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Cart::destroy();
+        
+        $data = $request->json()->all();
+
+        return $data['paymentIntent'];
     }
 
     /**
