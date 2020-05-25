@@ -8,6 +8,8 @@
     <meta name="generator" content="Jekyll v3.8.6">
     <title>PROJET B2 DEV WEB</title>
 
+    @yield('extra-script')
+
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -335,5 +337,6 @@
     <a href="#">Back to top</a>
   </p>
 </footer>
+@yield('extra-js')
 </body>
 </html>
