@@ -23,20 +23,17 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Route pour le panier
-Route::post('/panier/ajouter', 'CartController@store')->name('cart.store');
 Route::get('/panier', 'CartController@index')->name('cart.index');
+Route::post('/panier/ajouter', 'CartController@store')->name('cart.store');
+Route::patch('/panier/{rowId}', 'CartController@update')->name('cart.update');
 Route::delete('/panier/{rowId}', 'CartController@destroy')->name('cart.destroy');
 
-Route::get('/videpanier', function () {
-    Cart::destroy();
-});
+
 
 //Route pages de paiements
 Route::get('/paiement', 'CheckoutController@index')->name('checkout.index');
 Route::post('/paiement', 'CheckoutController@store')->name('checkout.store');
-Route::get('/merci', function (){
-    return view('checkout.thankyou');
-});
+Route::get('/merci', 'CheckoutController@thankYou')->name('checkout.thankyou');
 // Routes Users
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function(){
     Route::resource('users', 'UsersController');
