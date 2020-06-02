@@ -52,9 +52,4 @@ class User extends Authenticatable
     {
         return $this->roles()->whereIn('name', $roles)->first();
     }
-
-    public function getRouteKeyName()
-    {
-        return $this->user()->where('name')->first();
-    }
 }
