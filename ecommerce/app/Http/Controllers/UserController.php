@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\User;
+use App\Role;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
@@ -12,12 +14,24 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
+    public function index(User $user)
+    {
+        $users = User::all();
+        return view('user.index')->with('users',$users);
+    }
     public function edit(User $user)
     {
-        return view('user.edit', compact('user'));
+        if (Gate::denies('edit-users'))
+        {
+            return redirect()->route('user.index');
+        }
+
+        $roles = Role::all();
+
+        return view('user.edit', [
+            'user'=>$user,
+            'roles'=>$roles
+        ]);
     }
-    public function show(User $user)
-    {
-        return view('user.show', compact('user'));
-    }
+
 }

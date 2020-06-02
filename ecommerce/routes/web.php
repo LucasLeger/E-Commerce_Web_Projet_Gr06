@@ -42,4 +42,4 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:mana
 
 // Routes User
 Route::get('/edit', 'UserController@edit')->name('user.edit');
-Route::get('/show', 'UserController@show')->name('user.show');
+Route::get('/index', 'UserController@index')->name('user.index');
