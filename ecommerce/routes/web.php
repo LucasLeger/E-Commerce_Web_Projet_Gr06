@@ -38,3 +38,7 @@ Route::get('/merci', 'CheckoutController@thankYou')->name('checkout.thankyou');
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function(){
     Route::resource('users', 'UsersController');
 });
+
+// Routes User
+Route::get('/edit', 'UserController@edit')->name('user.edit');
+Route::get('/show', 'UserController@show')->name('user.show');

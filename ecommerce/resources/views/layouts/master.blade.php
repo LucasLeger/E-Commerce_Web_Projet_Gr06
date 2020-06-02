@@ -169,14 +169,14 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24" focusable="false"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
-                <div class="top-right links">
+                <div class="nav-item">
                     @auth
-                        <a href="{{ url('/home') }}">Compte</a>
+                        <a href="{{ url('/home') }}" class="nav-item">Compte</a>
                     @else
-                        <a href="{{ route('login') }}">Connexion</a>
+                        <a href="{{ route('login') }}" class="nav-item">Connexion</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Créer un compte</a>
+                            <a href="{{ route('register') }}" class="nav-item">Créer un compte</a>
                         @endif
                     @endauth
                 </div>
