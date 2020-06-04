@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Paramètres du compte</div>
+            <div class="card-header">Éditer votre compte <strong>{{ $user->name }}</strong></div>
                 <div class="card-body">
                     <form action="{{ route('user.update', $user) }}" method="POST">
                     @csrf
@@ -16,7 +16,7 @@
 
                             <div class="col-md-12">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" 
-                                name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                name="name" value="{{ old('name') ?? $user->name }}" required autocomplete="name" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -30,7 +30,7 @@
 
                             <div class="col-md-12">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" 
-                                name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                name="email" value="{{ old('email') ?? $user->email }}" required autocomplete="email" autofocus>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -44,7 +44,7 @@
 
                             <div class="col-md-12">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" 
-                                name="password" value="{{ old('password') }}" required autocomplete="current-password">
+                                name="password" value="{{ old('password') ?? $user->password }}" required autocomplete="current-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -53,6 +53,8 @@
                                 @enderror
                             </div>
                         </div>
+                        <button type="submit" class="btn btn-primary">Modifier les informations</button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -26,9 +26,7 @@
                             <td>{{ $user->email }}</td>
                             <td>{{ implode(', ', $user->roles()->get()->pluck('name')->toArray()) }}</td>
                             <td>
-                                @can('edit-users')
-                                <a href="{{ route('admin.users.edit', $user->id) }}"><button class="btn btn-primary">Éditer</button></a>
-                                @endcan
+                                <a href="{{ route('user.edit', $user->id) }}"><button class="btn btn-primary">Éditer</button></a>
                             </td>
                             </tr>
                         @endforeach
