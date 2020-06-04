@@ -43,3 +43,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:mana
 Route::get('/edit', 'UserController@edit')->name('user.edit');
 Route::get('/index', 'UserController@index')->name('user.index');
 Route::patch('/update', 'UserController@update')->name('user.update');
+
+// Routes Modifier Produits
+Route::get('/liste', 'GameController@index')->name('game.index');
+Route::get('/modifierjeux', 'GameController@edit')->name('game.edit');
+Route::delete('/supprjeux', 'GameController@destroy')->name('game.destroy');

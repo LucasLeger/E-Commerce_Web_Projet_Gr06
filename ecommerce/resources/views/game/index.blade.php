@@ -6,36 +6,34 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Liste des utilisateurs</div>
+                <div class="card-header">Gérer les jeux</div>
                 <div class="card-body">
-                    <table class="table-responsive">
+                    <table class="table">
                     <thead>
                         <tr>
-                        <th scope="col">#</th>
                         <th scope="col">Nom</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Rôles</th>
+                        <th scope="col">Type</th>
                         <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($users as $user)
+                        @foreach($products as $product)
                             <tr>
-                            <th scope="row">{{ $user->id }}</th>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>{{ implode(', ', $user->roles()->get()->pluck('name')->toArray()) }}</td>
+                            <td>{{ $product->title }}</td>
+                            @foreach($product->categories as $category)
+                                <td>{{ $category->name }}</td>
+                            @endforeach
                             <td>
-                                @can('edit-users')
-                                <a href="{{ route('admin.users.edit', $user->id) }}"><button class="btn btn-primary">Éditer</button></a>
-                                @endcan
-                                @can('delete-users')
-                                <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" class="d-inline">
+                            @can('edit-games')
+                                <a href="{{ route('game.edit', $product->id) }}"><button class="btn btn-primary">Éditer</button></a>
+                            @endcan
+                            @can('delete-games')
+                                <form action="{{ route('game.destroy', $product->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-warning">Supprimer</button>
                                 </form>
-                                @endcan
+                            @endcan
                             </td>
                             </tr>
                         @endforeach
@@ -43,6 +41,7 @@
                     </table>
                 </div>
             </div>
+            {{ $products->appends(request()->input())->links() }}
         </div>
     </div>
 </div>

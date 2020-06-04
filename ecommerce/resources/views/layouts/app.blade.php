@@ -67,6 +67,7 @@
                                     </form>
                                     @can('manage-users')
                                     <a class="dropdown-item" href="{{ route('admin.users.index') }}">Liste des utilisateurs</a>
+                                    <a class="dropdown-item" href="{{ route('game.index') }}">Gérer des jeux</a>
                                     @endcan
                                 </div>
                             </li>
