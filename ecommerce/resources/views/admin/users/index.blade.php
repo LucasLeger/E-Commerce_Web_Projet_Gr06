@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">Liste des utilisateurs</div>
                 <div class="card-body">
-                    <table class="table-responsive">
+                    <table class="table">
                     <thead>
                         <tr>
                         <th scope="col">#</th>

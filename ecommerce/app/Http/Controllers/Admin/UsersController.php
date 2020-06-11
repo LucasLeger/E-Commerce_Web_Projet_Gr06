@@ -90,7 +90,7 @@ class UsersController extends Controller
         $user->roles()->sync($request->roles);
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user ->password = Hash::make($request->password);
         $user->save();
 
         return redirect()->route('admin.users.index');

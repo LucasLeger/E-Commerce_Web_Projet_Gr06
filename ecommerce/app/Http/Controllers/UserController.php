@@ -7,6 +7,8 @@ use App\User;
 use App\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -31,13 +33,13 @@ class UserController extends Controller
         $request->validate([
             'name' => ['required'],
             'email' => ['required'],
-            'password' => ['required'],
+            'password' => ['required'],    
         ]);
         
         $user = User::where('id', Auth::user()->getAuthIdentifier())->first();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user ->password = Hash::make($request->password);
         $user->save();
 
         return redirect()->route('user.index');
