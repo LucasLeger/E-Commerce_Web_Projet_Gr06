@@ -63,6 +63,7 @@
                         <button type="submit" class="btn btn-primary">Modifier les informations</button>
                     </form>
                 </div>
+                </div>
             </div>
         </div>
     </div>

@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-            <div class="card-header">Éditer votre compte <strong>{{ $user->name }}</strong></div>
+                <div class="card-header">Éditer votre compte <strong>{{ $user->name }}</strong></div>
                 <div class="card-body">
                     <form action="{{ route('user.update', $user) }}" method="POST">
                     @csrf
@@ -55,6 +55,7 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Modifier les informations</button>
                     </form>
+                </div>
                 </div>
             </div>
         </div>
