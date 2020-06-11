@@ -20,26 +20,30 @@ class GameController extends Controller
                 $query->where('slug', request()->categorie);
             })->paginate(6);
         } else {
-            $products = Product::with('categories')->paginate(6);
+            $products = Product::with('categories')->paginate(7);
         }
         return view('game.index')->with('products', $products);
     }
     public function edit(Product $products)
     {
-        if (Gate::denies('edit-games'))
-        {
-            return redirect()->route('game.index');
+        return view('game.edit', ['products'=>$products]);
+    }
+    public function update(Request $request, Product $products)
+    {
+        $products->title = $request->title;
+        $products->price = $request->price;
+        $products->description = $request->description;
+        if ($request->get('image') != ""){
+            $products->image = $request->get('image');
+        }else{
+            $products->image = $request->image;
         }
+        $products->save();
 
-        return view('admin.users.edit', ['products'=>$products]);
+        return redirect()->route('game.index');
     }
     public function destroy(Product $products)
     {
-        if (Gate::denies('delete-games'))
-        {
-            return redirect()->route('game.index');
-        }
-
         $products->categories()->detach();
         $products->delete();
 

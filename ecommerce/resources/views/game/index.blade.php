@@ -12,7 +12,6 @@
                     <thead>
                         <tr>
                         <th scope="col">Nom</th>
-                        <th scope="col">Type</th>
                         <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -20,20 +19,9 @@
                         @foreach($products as $product)
                             <tr>
                             <td>{{ $product->title }}</td>
-                            @foreach($product->categories as $category)
-                                <td>{{ $category->name }}</td>
-                            @endforeach
                             <td>
-                            @can('edit-games')
                                 <a href="{{ route('game.edit', $product->id) }}"><button class="btn btn-primary">Éditer</button></a>
-                            @endcan
-                            @can('delete-games')
-                                <form action="{{ route('game.destroy', $product->id) }}" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-warning">Supprimer</button>
-                                </form>
-                            @endcan
+                                <a href="{{ route('game.destroy', $product->id) }}"><button class="btn btn-warning">Supprimer</button></a>
                             </td>
                             </tr>
                         @endforeach

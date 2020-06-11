@@ -40,11 +40,12 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:mana
 });
 
 // Routes User
-Route::get('/edit', 'UserController@edit')->name('user.edit');
-Route::get('/index', 'UserController@index')->name('user.index');
-Route::patch('/update', 'UserController@update')->name('user.update');
+Route::get('/user/edit', 'UserController@edit')->name('user.edit');
+Route::get('/user/index', 'UserController@index')->name('user.index');
+Route::patch('/user/update', 'UserController@update')->name('user.update');
 
 // Routes Modifier Produits
-Route::get('/liste', 'GameController@index')->name('game.index');
-Route::get('/modifierjeux', 'GameController@edit')->name('game.edit');
-Route::delete('/supprjeux', 'GameController@destroy')->name('game.destroy');
+Route::get('/game/liste', 'GameController@index')->name('game.index');
+Route::get('/game/edit/{id]', 'GameController@edit')->name('game.edit');
+Route::get('/game/delete/{id}', 'GameController@destroy')->name('game.destroy');
+Route::patch('/game/update', 'GameController@update')->name('game.update');
