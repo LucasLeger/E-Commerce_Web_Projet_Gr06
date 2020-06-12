@@ -13,16 +13,38 @@ class GameController extends Controller
     {
         $this->middleware('auth');
     }
-    public function index()
+    public function index(Product $products)
     {
         if (request()->categorie) {
             $products = Product::with('categories')->whereHas('categories', function ($query) {
                 $query->where('slug', request()->categorie);
             })->paginate(6);
         } else {
-            $products = Product::with('categories')->paginate(7);
+            $products = Product::with('categories')->paginate(6);
         }
         return view('game.index')->with('products', $products);
+    }
+    public function create(Product $products)
+    {
+        return view('game.create');
+    }
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title' => ['required'],
+            'price' => ['required'],
+            'description' => ['required'],
+            'image' => ['required']
+        ]);
+
+        $products = new Product();
+        $products->title = $request->get('title');
+        $products->price = $request->get('price');
+        $products->description = $request->get('description');
+        $products->image = $request->get('image');
+        $products->save();
+
+        return redirect()->route('game.index');
     }
     public function edit(Product $products)
     {

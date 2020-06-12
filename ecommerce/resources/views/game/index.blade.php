@@ -31,6 +31,7 @@
                         @endforeach
                     </tbody>
                     </table>
+                    <a href="{{ route('game.create') }}"><button type="submit" class="btn btn-warning">Ajoutez un jeu</button></a>
                 </div>
             </div>
             {{ $products->appends(request()->input())->links() }}

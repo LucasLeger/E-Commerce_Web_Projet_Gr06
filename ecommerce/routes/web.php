@@ -46,6 +46,8 @@ Route::patch('/user/update', 'UserController@update')->name('user.update');
 
 // Routes Modifier Produits
 Route::get('/game/liste', 'GameController@index')->name('game.index');
+Route::get('/game/create', 'GameController@create')->name('game.create');
+Route::patch('/game/store', 'GameController@store')->name('game.store');
 Route::get('/game/edit/{id]', 'GameController@edit')->name('game.edit');
 Route::delete('/game/delete/{id}', 'GameController@destroy')->name('game.destroy');
 Route::patch('/game/update', 'GameController@update')->name('game.update');
