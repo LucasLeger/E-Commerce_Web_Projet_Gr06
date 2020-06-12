@@ -42,8 +42,9 @@ class GameController extends Controller
 
         return redirect()->route('game.index');
     }
-    public function destroy(Product $products)
+    public function destroy(Product $products, $id)
     {
+        $products = Product::find($id);
         $products->categories()->detach();
         $products->delete();
 

@@ -21,7 +21,11 @@
                             <td>{{ $product->title }}</td>
                             <td>
                                 <a href="{{ route('game.edit', $product->id) }}"><button class="btn btn-primary">Éditer</button></a>
-                                <a href="{{ route('game.destroy', $product->id) }}"><button class="btn btn-warning">Supprimer</button></a>
+                                <form action="{{ route('game.destroy', $product->id) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <a href="{{ route('game.destroy', $product->id) }}"><button type="submit" class="btn btn-warning">Supprimer</button></a>
+                                </form>
                             </td>
                             </tr>
                         @endforeach
