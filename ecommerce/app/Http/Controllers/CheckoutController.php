@@ -81,7 +81,7 @@ class CheckoutController extends Controller
         }
 
         $order->products = serialize($products);
-        $order->user_id = 15;
+        $order->user_id = \Auth::user()->id;
         $order->save();
 
         if ($data['paymentIntent']['status'] === 'succeeded') {
@@ -95,7 +95,10 @@ class CheckoutController extends Controller
 
     public function thankyou() 
     {
-        return Session::has('success') ? view('checkout.thankyou') : redirect()->route('products.index');
+        $order = Order::where('user_id', \Auth::user()->id)->orderBy('payment_created_at', 'DESC')->first();
+        // dd($order);
+        $id = $order->id;
+        return Session::has('success') ? view('checkout.thankyou', compact('id')) : redirect()->route('products.index');
     }
 
     /**
