@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'ProductController@index')->name('products.index');
 
 // Routes des produits
-//Route::get('/boutique', 'ProductController@index')->name('products.index');
 Route::get('/boutique/{slug}', 'ProductController@show')->name('products.show');
 Route::get('/search', 'ProductController@search')->name('products.search');
 Auth::routes();
@@ -51,3 +50,6 @@ Route::patch('/game/store', 'GameController@store')->name('game.store');
 Route::get('/game/edit/{id]', 'GameController@edit')->name('game.edit');
 Route::delete('/game/delete/{id}', 'GameController@destroy')->name('game.destroy');
 Route::patch('/game/update', 'GameController@update')->name('game.update');
+
+// Route vers PDF
+Route::get('/pdf/{id}', 'OrderController@orderPdf')->name('order.pdf');
