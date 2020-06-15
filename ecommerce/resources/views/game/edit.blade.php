@@ -24,6 +24,21 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="title" class="col-md-6 col-form-label">{{ __('Catégorie') }}</label>
+                            <div class="col-md-12">
+                                <select class="form-control @error('name') is-invalid @enderror">
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}"><strong>{{ $category->name }}</strong></option>
+                                    @endforeach        
+                                </select>
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="price" class="col-md-6 col-form-label">{{ __('Prix (ex: 8000 pour 80€)') }}</label>
                             <div class="col-md-12">
                                 <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" 

@@ -24,14 +24,21 @@ class GameController extends Controller
         }
         return view('game.index')->with('products', $products);
     }
-    public function create(Product $products)
+    public function create()
     {
-        return view('game.create');
+        $categories = Category::all();
+        return view('game.create', compact('categories'));
     }
-    public function store(Request $request)
+    public function edit(Product $products)
+    {
+        $categories = Category::all();
+        return view('game.edit', ['products'=>$products], compact('categories'));
+    }
+    public function store(Request $request, $products)
     {
         $request->validate([
             'title' => ['required'],
+            'name' => ['required'],
             'price' => ['required'],
             'description' => ['required'],
             'image' => ['required']
@@ -45,10 +52,6 @@ class GameController extends Controller
         $products->save();
 
         return redirect()->route('game.index');
-    }
-    public function edit(Product $products)
-    {
-        return view('game.edit', ['products'=>$products]);
     }
     public function update(Request $request, Product $products)
     {
