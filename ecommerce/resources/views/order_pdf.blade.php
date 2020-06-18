@@ -68,9 +68,9 @@
             <tbody>
                 <tr>
                     <td><div><strong>Service</strong></div>
-                        <p>Description here. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt maiores placeat similique nisi. Nisi ratione, molestias exercitationem illo reiciendis cumque?</p></td>
-                        <td>9MQ4-YPQY-CU4Y-BER6</td>
-                        <td class="text-right">60€</td>
+                        <p>Jeux-vidéos</p></td>
+                        <td>60€</td>
+                        <td class="text-right">9MQ4-YPQY-CU4Y-BER6</td>
                 </tr>
             </tbody>
         </table>
@@ -81,8 +81,8 @@
                     <table style="width: 100%">
                         <tbody>
                             <tr class="well" style="padding: 5px">
-                                <th style="padding: 5px"><div> Balance Due (CAD) </div></th>
-                                <td style="padding: 5px" class="text-right"><strong> $600 </strong></td>
+                                <th style="padding: 5px"><div> Total </div></th>
+                                <td style="padding: 5px" class="text-right"><strong> 60€ </strong></td>
                             </tr>
                         </tbody>
                     </table>
