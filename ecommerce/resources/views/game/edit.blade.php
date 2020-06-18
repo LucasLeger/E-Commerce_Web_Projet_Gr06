@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">Éditer le jeu<strong>{{ $products->title }}</strong></div>
                 <div class="card-body">
-                    <form action="{{ route('game.update', $products) }}" method="POST">
+                    <form action="{{ route('game.update', $products, $categories) }}" method="POST">
                     @csrf
                     @method('PATCH')
                         <div class="form-group row">
@@ -28,7 +28,7 @@
                             <div class="col-md-12">
                                 <select class="form-control @error('name') is-invalid @enderror" id="categories_id" name="categories_id">
                                     @foreach ($categories as $categories)
-                                        <option value="{{ $categories->id }}"><strong>{{ $categories->name }}</strong></option>
+                                        <option value="{{ $categories->id }}" ><strong>{{ $categories->name }}</strong></option>
                                     @endforeach        
                                 </select>
                                 @error('name')

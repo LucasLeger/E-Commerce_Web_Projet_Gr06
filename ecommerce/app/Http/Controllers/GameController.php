@@ -48,10 +48,10 @@ class GameController extends Controller
         $category_product = new Category_product();
         $products->title = $request->get('title');
         $category_product->category_id = $request->get('categories_id');
-        $products->slug = 'Nouveau jeux !';
-        $products->subtitle = 'Nouveau jeux!';
+        $products->slug = $request->get('title');
         $products->price = $request->get('price');
         $products->description = $request->get('description');
+        $products->subtitle = $request->get('description');
         $products->image = $request->get('image');
         $products->save();
         $category_product->product_id = $products->id;
@@ -59,20 +59,21 @@ class GameController extends Controller
 
         return redirect()->route('game.index');
     }
-    public function update(Request $request, Product $products)
+    public function update(Request $request, Product $products, Category $categories)
     {
         $products->title = $request->title;
-        $category_product->category_id = $request->categories_id;
+        $products->slug = $request->title;
         $products->price = $request->price;
         $products->description = $request->description;
+        $products->subtitle = $request->description;
         if ($request->get('image') != ""){
             $products->image = $request->get('image');
         }else{
             $products->image = $request->image;
         }
         $products->save();
-        $category_product->product_id = $products->id;
-        $category_product->save();
+        //$category_product->product_id = $products->id;
+        //$category_product->save();
 
         return redirect()->route('game.index');
     }
