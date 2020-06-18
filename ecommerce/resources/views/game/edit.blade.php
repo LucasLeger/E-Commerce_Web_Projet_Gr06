@@ -26,9 +26,9 @@
                         <div class="form-group row">
                             <label for="title" class="col-md-6 col-form-label">{{ __('Catégorie') }}</label>
                             <div class="col-md-12">
-                                <select class="form-control @error('name') is-invalid @enderror">
+                                <select class="form-control @error('name') is-invalid @enderror" id="categories_id" name="categories_id">
                                     @foreach ($categories as $categories)
-                                        <option id="categories_id" name="categories_id" value="{{ $categories->id }}"><strong>{{ $categories->name }}</strong></option>
+                                        <option value="{{ $categories->id }}"><strong>{{ $categories->name }}</strong></option>
                                     @endforeach        
                                 </select>
                                 @error('name')
