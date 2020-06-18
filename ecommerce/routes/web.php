@@ -53,3 +53,9 @@ Route::patch('/game/update', 'GameController@update')->name('game.update');
 
 // Route vers PDF
 Route::get('/pdf/{id}', 'OrderController@orderPdf')->name('order.pdf');
+// Route::get('/commande-pdf', function () {
+//     // return view('commande-pdf');
+
+//     $pdf = PDF::loadView('order_pdf');
+//     return $pdf->download('commande.pdf');
+// })->name('order.pdf');
