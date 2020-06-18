@@ -27,8 +27,8 @@
                             <label for="title" class="col-md-6 col-form-label">{{ __('Catégorie') }}</label>
                             <div class="col-md-12">
                                 <select class="form-control @error('name') is-invalid @enderror">
-                                    @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}"><strong>{{ $category->name }}</strong></option>
+                                    @foreach ($categories as $categories)
+                                        <option id="categories_id" name="categories_id" value="{{ $categories->id }}"><strong>{{ $categories->name }}</strong></option>
                                     @endforeach        
                                 </select>
                                 @error('name')
