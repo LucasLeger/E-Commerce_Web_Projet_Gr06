@@ -96,7 +96,6 @@ class CheckoutController extends Controller
     public function thankyou() 
     {
         $order = Order::where('user_id', \Auth::user()->id)->orderBy('payment_created_at', 'DESC')->first();
-        // dd($order);
         $id = $order->id;
         return Session::has('success') ? view('checkout.thankyou', compact('id')) : redirect()->route('products.index');
     }
