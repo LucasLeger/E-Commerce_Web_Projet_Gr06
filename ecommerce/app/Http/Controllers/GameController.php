@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Category;
+use App\Category_product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -34,28 +35,34 @@ class GameController extends Controller
         $categories = Category::all();
         return view('game.edit', ['products'=>$products], compact('categories'));
     }
-    public function store(Request $request, $products)
+    public function store(Request $request)
     {
         $request->validate([
             'title' => ['required'],
-            'name' => ['required'],
             'price' => ['required'],
             'description' => ['required'],
             'image' => ['required']
         ]);
 
         $products = new Product();
+        $category_product = new Category_product();
         $products->title = $request->get('title');
+        $category_product->category_id = $request->get('categories_id');
+        $products->slug = 'Nouveau jeux !';
+        $products->subtitle = 'Nouveau jeux!';
         $products->price = $request->get('price');
         $products->description = $request->get('description');
         $products->image = $request->get('image');
         $products->save();
+        $category_product->product_id = $products->id;
+        $category_product->save();
 
         return redirect()->route('game.index');
     }
     public function update(Request $request, Product $products)
     {
         $products->title = $request->title;
+        $category_product->category_id = $request->categories_id;
         $products->price = $request->price;
         $products->description = $request->description;
         if ($request->get('image') != ""){
@@ -64,6 +71,8 @@ class GameController extends Controller
             $products->image = $request->image;
         }
         $products->save();
+        $category_product->product_id = $products->id;
+        $category_product->save();
 
         return redirect()->route('game.index');
     }
