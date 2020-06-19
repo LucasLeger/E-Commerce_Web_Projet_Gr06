@@ -79,7 +79,7 @@
             var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
             var form = document.getElementById('payment-form');
             var url = form.action;
-            var redirect= '/E-Commerce_Web_Projet_Gr06/ecommerce/public/merci';
+            var redirect= "{{ route('checkout.thankyou') }}";
 
             fetch(
                 url,
