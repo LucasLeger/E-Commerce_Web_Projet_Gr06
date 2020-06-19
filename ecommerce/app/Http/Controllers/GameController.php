@@ -59,7 +59,7 @@ class GameController extends Controller
 
         return redirect()->route('game.index');
     }
-    public function update(Request $request, Product $products, Category $categories)
+    public function update(Request $request, Product $products)
     {
         $products->title = $request->title;
         $products->slug = $request->title;
@@ -72,8 +72,6 @@ class GameController extends Controller
             $products->image = $request->image;
         }
         $products->save();
-        //$category_product->product_id = $products->id;
-        //$category_product->save();
 
         return redirect()->route('game.index');
     }

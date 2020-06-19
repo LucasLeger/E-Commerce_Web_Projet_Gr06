@@ -28,7 +28,7 @@
                             <div class="col-md-12">
                                 <select class="form-control @error('name') is-invalid @enderror" id="categories_id" name="categories_id">
                                     @foreach ($categories as $categories)
-                                        <option value="{{ $categories->id }}" ><strong>{{ $categories->name }}</strong></option>
+                                        <option value="{{ $categories->id }}"><strong>{{ $categories->name }}</strong></option>
                                     @endforeach        
                                 </select>
                                 @error('name')
