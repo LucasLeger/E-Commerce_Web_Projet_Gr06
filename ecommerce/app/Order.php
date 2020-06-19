@@ -10,4 +10,11 @@ class Order extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function getPrice()
+    {
+        $amount = $this->amount / 100;
+
+        return number_format($amount, 2, ',', ' ') . ' €';
+    }
 }

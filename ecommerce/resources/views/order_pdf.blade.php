@@ -49,7 +49,7 @@
                         </tr>
                         <tr>
                             <th>Date :</th>
-                            <td class="text-right">25/06/2020</td>
+                            <td class="text-right">{{ $order->created_at->format('d/m/Y') }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -60,7 +60,7 @@
         <table class="table">
             <thead style="background: #F5F5F5;">
                 <tr>
-                    <th>Item List</th>
+                    <th>Articles</th>
                     <th>Prix</th>
                     <th class="text-right">Code</th>
                 </tr>
@@ -82,7 +82,7 @@
                         <tbody>
                             <tr class="well" style="padding: 5px">
                                 <th style="padding: 5px"><div> Total </div></th>
-                                <td style="padding: 5px" class="text-right"><strong> 60€ </strong></td>
+                                <td style="padding: 5px" class="text-right"><strong> {{ $order->getPrice() }} </strong></td>
                             </tr>
                         </tbody>
                     </table>
@@ -93,7 +93,7 @@
 
             <div class="row">
                 <div class="col-xs-8 invbody-terms">
-                    Thank you for your business. <br>
+                    Merci d'avoir commandé ;) <br>
                     <br>
                     <h4>Payment Terms</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eius quia, aut doloremque, voluptatibus quam ipsa sit sed enim nam dicta. Soluta eaque rem necessitatibus commodi, autem facilis iusto impedit!</p>
