@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Order extends Model
 {
@@ -17,4 +18,8 @@ class Order extends Model
 
         return number_format($amount, 2, ',', ' ') . ' €';
     }
+    
+    public function gameCode(){
+        $code = Str::random(16);
+       }
 }

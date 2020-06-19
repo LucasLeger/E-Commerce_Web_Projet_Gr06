@@ -60,17 +60,12 @@
         <table class="table">
             <thead style="background: #F5F5F5;">
                 <tr>
-                    <th>Articles</th>
-                    <th>Prix</th>
-                    <th class="text-right">Code</th>
+                    <th class="text-right">Votre Code</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><div><strong>Service</strong></div>
-                        <p>Jeux-vidéos</p></td>
-                        <td>60€</td>
-                        <td class="text-right">9MQ4-YPQY-CU4Y-BER6</td>
+                    <td class="text-right">9MQ4-YPQY-CU4Y-BER6</td>
                 </tr>
             </tbody>
         </table>
